@@ -1,0 +1,12 @@
+<div *ngIf="admins?.length > 0; else noAdmins">
+  <ul *ngFor="let admin of admins">
+    <li>
+      {{ admin.firstName }} - {{ admin.role }} <br />
+      Contact: {{ admin.email }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #noAdmins>
+  <h5>You need to login as admin to see this page</h5>
+</ng-template>
