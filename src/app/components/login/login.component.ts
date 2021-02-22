@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
@@ -21,8 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private auth: AuthService,
-    private router: Router,
-    private flashMessage: FlashMessagesService
+    private router: Router
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.email, Validators.required]],

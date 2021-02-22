@@ -5,10 +5,6 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {
-  FlashMessagesModule,
-  FlashMessagesService,
-} from 'angular2-flash-messages';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,13 +30,13 @@ import { LoginComponent } from './components/login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot(),
+
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
   ],
   exports: [FormsModule, ReactiveFormsModule, MaterialModule],
-  providers: [FlashMessagesService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
