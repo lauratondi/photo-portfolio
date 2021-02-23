@@ -1,0 +1,29 @@
+<mat-card>
+  <section>
+    <input
+      type="file"
+      name="file"
+      id="file"
+      multiple
+      (change)="uploadImages($event)"
+    />
+    <div class="image-preview" [hidden]="!imageURL">
+      <img [src]="imageURL || '//:0'" />
+    </div>
+  </section>
+  <section>
+    <form [formGroup]="galleryForm" (ngSubmit)="saveGallery()">
+      <mat-form-field>
+        <input matInput placeholder="Gallery title" formControlName="title" />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="textarea description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary">Save</button>
+    </form>
+  </section>
+</mat-card>

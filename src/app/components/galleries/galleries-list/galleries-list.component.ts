@@ -15,7 +15,7 @@ export class GalleriesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGalleries();
-    console.log(this);
+    // console.log(this);
   }
 
   // getGalleries() {

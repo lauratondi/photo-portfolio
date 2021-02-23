@@ -25,9 +25,9 @@ export class AuthService {
       .catch((error: any) => console.log(error.message));
   }
 
-  // getAuth(): boolean {
-  //   return this.afAuth !== null;
-  // }
+  getAuth(): boolean {
+    return this.afAuth !== null;
+  }
 
   // googleLogin() {
   //   const provider = new firebase.auth.GoogleAuthProvider();

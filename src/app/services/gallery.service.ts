@@ -24,7 +24,7 @@ export class GalleryService {
   ) {}
 
   getGalleries() {
-    this.galleryCollection = this.afs.collection('galleries');
+    this.galleryCollection = this.afs.collection('albums');
 
     return this.galleryCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -38,7 +38,7 @@ export class GalleryService {
   }
 
   getImage(id: string) {
-    return this.afs.doc<Gallery>(`galleries/${id}/images`);
+    return this.afs.doc<Gallery>(`albums/${id}/images`);
   }
 
   createGallery(data: Gallery) {

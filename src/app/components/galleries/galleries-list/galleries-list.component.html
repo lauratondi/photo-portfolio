@@ -3,14 +3,30 @@
 <!-- <div class="card" *ngFor="let gallery of galleries">
   <h2>{{ gallery.title }}</h2>
 </div> -->
-
-<!-- <mat-grid-list *ngFor="let gallery of galleries">
-  <h1>Galleries</h1>
-  <mat-grid-tile *ngFor="let image of images">
+<!-- 
+<mat-grid-list>
+  <mat-grid-tile *ngFor="let gallery of galleries">
     {{ gallery.title }}
   </mat-grid-tile>
 </mat-grid-list> -->
 
-<main *ngFor="let gallery of galleries">
-  {{ gallery.title }}
+<main>
+  <mat-card *ngFor="let gallery of galleries">
+    <!-- <img
+      src="{{ gallery.image }}"
+      alt="{{ gallery.title }}"
+      [hidden]="post.image == null"
+    /> -->
+    <mat-card-content>
+      <mat-card-title>
+        {{ gallery.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ gallery.description }}
+      </mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+  <section>
+    <app-gallery-dashboard></app-gallery-dashboard>
+  </section>
 </main>
