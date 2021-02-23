@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MaterialModule } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminsComponent } from './components/admins/admins.component';
-import { MaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
+import { GalleriesListComponent } from './components/galleries/galleries-list/galleries-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     AdminsComponent,
     LoginComponent,
+    GalleriesListComponent,
   ],
   imports: [
     BrowserModule,
