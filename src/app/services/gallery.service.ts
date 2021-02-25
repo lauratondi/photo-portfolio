@@ -5,6 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Gallery } from '../models/Gallery';
@@ -15,8 +16,9 @@ import { Gallery } from '../models/Gallery';
 export class GalleryService {
   galleryCollection: AngularFirestoreCollection<Gallery>;
   galleryDoc: AngularFirestoreDocument;
-  // galleries: Gallery[];
   galleries: Observable<Gallery[]>;
+  gallery: Observable<Gallery>;
+  imagesColletion: AngularFirestoreCollection;
 
   constructor(
     private afs: AngularFirestore,
@@ -24,7 +26,7 @@ export class GalleryService {
   ) {}
 
   getGalleries() {
-    this.galleryCollection = this.afs.collection('albums');
+    this.galleryCollection = this.afs.collection('galleries');
 
     return this.galleryCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -37,11 +39,36 @@ export class GalleryService {
     );
   }
 
-  getImage(id: string) {
-    return this.afs.doc<Gallery>(`albums/${id}/images`);
+  // Reference to display in the database
+  // getGallery(id: string) {
+  //   return this.afs.doc<Gallery>(`galleries/${id}`);
+  // }
+
+  getGallery(id: string) {
+    this.galleryDoc = this.afs.doc<Gallery>(`galleries/${id}`);
+
+    this.gallery = this.galleryDoc.snapshotChanges().pipe(
+      map((action) => {
+        const data = action.payload.data();
+        const id = action.payload.id;
+        return { id, ...data };
+      })
+    );
+    console.log(this.gallery);
+    return this.gallery;
   }
 
-  createGallery(data: Gallery) {
-    return this.galleryCollection.add(data);
+  createGallery(gallery: Gallery) {
+    return this.galleryCollection.add(gallery);
+  }
+
+  deleteGallery(id: string) {
+    this.galleryDoc = this.afs.doc(`galleries/${id}`);
+    this.galleryDoc.delete();
+  }
+
+  updateGallery(id: string, images: AngularFirestoreCollection) {
+    this.imagesColletion = this.afs.collection(`galleries/${id}/images`);
+    return this.imagesColletion.add(images);
   }
 }

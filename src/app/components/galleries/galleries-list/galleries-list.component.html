@@ -12,12 +12,11 @@
 
 <main>
   <mat-card *ngFor="let gallery of galleries">
-    <!-- <img
-      src="{{ gallery.image }}"
-      alt="{{ gallery.title }}"
-      [hidden]="post.image == null"
-    /> -->
-    <mat-card-content>
+    <!-- <div class="carousel-cell" *ngFor="let image of images">
+      <img [src]="image.link" />
+    </div> -->
+
+    <mat-card-content routerLink="{{ gallery.id }}">
       <mat-card-title>
         {{ gallery.title }}
       </mat-card-title>
@@ -26,7 +25,10 @@
       </mat-card-subtitle>
     </mat-card-content>
   </mat-card>
-  <section>
+  <!-- <section>
     <app-gallery-dashboard></app-gallery-dashboard>
+  </section> -->
+  <section>
+    <app-create-gallery></app-create-gallery>
   </section>
 </main>

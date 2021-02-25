@@ -16,8 +16,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { LoginComponent } from './components/login/login.component';
 import { GalleriesListComponent } from './components/galleries/galleries-list/galleries-list.component';
-import { GalleryDashboardComponent } from './components/galleries/gallery-dashboard/gallery-dashboard.component';
 import { GalleryDetailComponent } from './components/galleries/gallery-detail/gallery-detail.component';
+import { CreateGalleryComponent } from './components/galleries/create-gallery/create-gallery.component';
+import { EditGalleryComponent } from './components/galleries/edit-gallery/edit-gallery.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { GalleryDetailComponent } from './components/galleries/gallery-detail/ga
     LoginComponent,
     GalleriesListComponent,
     GalleryDetailComponent,
-    GalleryDashboardComponent,
+
+    CreateGalleryComponent,
+
+    EditGalleryComponent,
   ],
   imports: [
     BrowserModule,

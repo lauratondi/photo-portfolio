@@ -1,1 +1,14 @@
-<p>gallery-detail works!</p>
+<mat-card>
+  <section>
+    <h1>{{ gallery.title }}</h1>
+    <h2>{{ gallery.description }}</h2>
+    <button mat-icon-button (click)="deleteGallery(id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </section>
+</mat-card>
+<mat-card>
+  <section>
+    <app-edit-gallery></app-edit-gallery>
+  </section>
+</mat-card>

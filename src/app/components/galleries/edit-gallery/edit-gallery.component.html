@@ -1,0 +1,22 @@
+<section>
+  <form>
+    <input
+      type="file"
+      name="file"
+      id="file"
+      multiple
+      (change)="detectFiles($event)"
+    />
+    <div class="image-preview" [hidden]="!imageURL">
+      <img [src]="imageURL || '//:0'" />
+    </div>
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      (click)="uploadImages()"
+    >
+      Save
+    </button>
+  </form>
+</section>

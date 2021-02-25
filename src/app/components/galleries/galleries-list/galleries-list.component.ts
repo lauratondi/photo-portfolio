@@ -18,11 +18,6 @@ export class GalleriesListComponent implements OnInit {
     // console.log(this);
   }
 
-  // getGalleries() {
-  //   this.galleries = this.galleryService.getGalleries();
-  //   this.galleries.subscribe((res) => console.log(res));
-  // }
-
   getGalleries() {
     return this.galleryService.getGalleries().subscribe((galleries) => {
       this.galleries = galleries;
