@@ -5,6 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,7 +19,8 @@ export class GalleryService {
   galleryDoc: AngularFirestoreDocument;
   galleries: Observable<Gallery[]>;
   gallery: Observable<Gallery>;
-  imagesColletion: AngularFirestoreCollection;
+  downloadURL: Observable<string>;
+  images: AngularFirestoreCollection<any>;
 
   constructor(
     private afs: AngularFirestore,
@@ -67,8 +69,23 @@ export class GalleryService {
     this.galleryDoc.delete();
   }
 
-  updateGallery(id: string, images: AngularFirestoreCollection) {
-    this.imagesColletion = this.afs.collection(`galleries/${id}/images`);
-    return this.imagesColletion.add(images);
+  updateGallery(id: string) {
+    // const path = `galleries/${id}/images/`;
+
+    // const ref = this.storage.ref(`galleries/${id}/images/`);
+
+    this.images = this.afs.collection(`galleries/${id}/images/`);
+
+    this.storage
+      .ref(`galleries/${id}/images/`)
+      .getDownloadURL()
+      .subscribe((url) => {
+        this.downloadURL = url;
+        console.log('Saved as collection');
+
+        const data = { url };
+
+        return this.images.add(data);
+      });
   }
 }

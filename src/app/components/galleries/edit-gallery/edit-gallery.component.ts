@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {
   AngularFirestore,
@@ -19,6 +19,7 @@ import { finalize } from 'rxjs/operators';
 export class EditGalleryComponent implements OnInit {
   id: string | any;
   imageURL: Observable<string>;
+  downloadURL: Observable<string>;
   images: AngularFirestoreCollection;
   selection: FileList;
 
@@ -36,16 +37,11 @@ export class EditGalleryComponent implements OnInit {
     console.log(this.selection);
   }
 
-  // upload() {
-  //   const file = this.selection[0];
-
-  //   this.imageService.uploadImages(file);
-  // }
   uploadImages() {
     this.id = this.router.snapshot.paramMap.get('id');
     const file = this.selection[0];
     const name = file.name;
-    const path = `galleries/${this.id}/${name}`;
+    const path = `galleries/${this.id}/images/${name}`;
     const ref = this.storage.ref(path);
     const task = this.storage.upload(path, file);
 
@@ -53,29 +49,16 @@ export class EditGalleryComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
-          ref.getDownloadURL().subscribe((downloadURL) => {
-            this.imageURL = downloadURL;
+          ref.getDownloadURL().subscribe((url) => {
+            this.downloadURL = url;
             console.log('Images uploaded');
           });
         })
       )
       .subscribe();
     if (file.type.split('/')[0] == 'image') {
-      this.galleryService.updateGallery(this.id, this.images);
+      this.galleryService.updateGallery(this.id);
       console.log('Gallery updated');
     }
   }
 }
-
-// saveInGallery() {
-//   this.galleryService.updateGallery(this.id, this.images);
-//   console.log('Gallery updated');
-// }
-// this.images = this.afs.collection(path);
-// ref.getDownloadURL().subscribe((url) => {
-//   console.log('Saved as collection');
-
-//   const data = { name, url };
-
-//   return this.images.add(data);
-// });
