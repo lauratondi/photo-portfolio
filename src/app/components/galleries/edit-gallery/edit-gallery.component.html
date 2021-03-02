@@ -7,7 +7,7 @@
       multiple
       (change)="detectFiles($event)"
     />
-    <div>
+    <div [hidden]="!uploadPercent || !imageURL">
       <mat-progress-bar
         mode="determinate"
         value="{{ uploadPercent | async }}"
@@ -22,7 +22,15 @@
       color="primary"
       (click)="uploadImages()"
     >
-      Save
+      Upload
+    </button>
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      (click)="uploadImages()"
+    >
+      Save Gallery
     </button>
   </form>
 </section>

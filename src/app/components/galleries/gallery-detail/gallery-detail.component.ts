@@ -1,6 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { GalleryService } from '../../../services/gallery.service';
 import { Gallery } from '../../../models/Gallery';
 
@@ -12,10 +17,12 @@ import { Gallery } from '../../../models/Gallery';
 export class GalleryDetailComponent implements OnInit {
   gallery: Gallery;
   id: string | any;
+  images: AngularFirestoreCollection<any>;
 
   constructor(
     private router: ActivatedRoute,
-    private galleryService: GalleryService
+    private galleryService: GalleryService,
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit(): void {

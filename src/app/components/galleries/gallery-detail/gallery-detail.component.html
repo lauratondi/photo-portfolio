@@ -2,6 +2,13 @@
   <section>
     <h1>{{ gallery?.title }}</h1>
     <h2>{{ gallery?.description }}</h2>
+    <mat-grid-tile *ngFor="let image of images">
+      <img
+        [src]="image.url"
+        alt="{{ image.name }}"
+        routerLink="{{ image.id }}"
+      />
+    </mat-grid-tile>
     <!-- <mat-grid-tile>
       <img [src]="image.url" alt="{{ image.name }}" />
     </mat-grid-tile> -->
