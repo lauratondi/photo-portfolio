@@ -69,21 +69,21 @@ export class GalleryService {
     this.galleryDoc.delete();
   }
 
-  updateGallery(id: string) {
+  updateGallery(id: string, name: string) {
     // const path = `galleries/${id}/images/`;
 
     // const ref = this.storage.ref(`galleries/${id}/images/`);
-
+    // const name = File.name;
     this.images = this.afs.collection(`galleries/${id}/images/`);
 
     this.storage
-      .ref(`galleries/${id}/images/`)
+      .ref(`galleries/${id}/images/${name}`)
       .getDownloadURL()
       .subscribe((url) => {
         this.downloadURL = url;
         console.log('Saved as collection');
 
-        const data = { url };
+        const data = { url, name };
 
         return this.images.add(data);
       });

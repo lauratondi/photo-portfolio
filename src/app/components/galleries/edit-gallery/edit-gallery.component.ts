@@ -20,6 +20,7 @@ export class EditGalleryComponent implements OnInit {
   id: string | any;
   imageURL: Observable<string>;
   downloadURL: Observable<string>;
+  uploadPercent: Observable<any>;
   images: AngularFirestoreCollection;
   selection: FileList;
 
@@ -30,7 +31,9 @@ export class EditGalleryComponent implements OnInit {
     private galleryService: GalleryService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = this.router.snapshot.paramMap.get('id');
+  }
 
   detectFiles(event: any) {
     this.selection = event.target.files;
@@ -38,13 +41,13 @@ export class EditGalleryComponent implements OnInit {
   }
 
   uploadImages() {
-    this.id = this.router.snapshot.paramMap.get('id');
+    // this.id = this.router.snapshot.paramMap.get('id');
     const file = this.selection[0];
     const name = file.name;
     const path = `galleries/${this.id}/images/${name}`;
     const ref = this.storage.ref(path);
     const task = this.storage.upload(path, file);
-
+    this.uploadPercent = task.percentageChanges();
     task
       .snapshotChanges()
       .pipe(
@@ -56,9 +59,12 @@ export class EditGalleryComponent implements OnInit {
         })
       )
       .subscribe();
+
     if (file.type.split('/')[0] == 'image') {
-      this.galleryService.updateGallery(this.id);
+      this.galleryService.updateGallery(this.id, name);
       console.log('Gallery updated');
+    } else {
+      console.log('File is not an image');
     }
   }
 }

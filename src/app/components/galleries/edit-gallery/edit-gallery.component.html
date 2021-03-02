@@ -7,6 +7,12 @@
       multiple
       (change)="detectFiles($event)"
     />
+    <div>
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ uploadPercent | async }}"
+      ></mat-progress-bar>
+    </div>
     <div class="image-preview" [hidden]="!imageURL">
       <img [src]="imageURL || '//:0'" />
     </div>
