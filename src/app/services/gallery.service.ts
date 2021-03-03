@@ -17,10 +17,13 @@ import { Gallery } from '../models/Gallery';
 export class GalleryService {
   galleryCollection: AngularFirestoreCollection<Gallery>;
   galleryDoc: AngularFirestoreDocument;
+  // imageCollection: AngularFirestoreCollection<any>;
+  // imageDoc: AngularFirestoreDocument;
   galleries: Observable<Gallery[]>;
   gallery: Observable<Gallery>;
   downloadURL: Observable<string>;
   images: AngularFirestoreCollection<any>;
+  // image: Observable<any>;
 
   constructor(
     private afs: AngularFirestore,

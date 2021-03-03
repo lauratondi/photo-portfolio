@@ -2,18 +2,9 @@
   <section>
     <h1>{{ gallery?.title }}</h1>
     <h2>{{ gallery?.description }}</h2>
-    <mat-grid-tile *ngFor="let image of images">
-      <img
-        [src]="image.url"
-        alt="{{ image.name }}"
-        routerLink="{{ image.id }}"
-      />
-    </mat-grid-tile>
-    <!-- <mat-grid-tile>
-      <img [src]="image.url" alt="{{ image.name }}" />
-    </mat-grid-tile> -->
+    <app-images></app-images>
     <button mat-icon-button (click)="deleteGallery(id)">
-      <mat-icon>delete</mat-icon>
+      <mat-icon> delete </mat-icon>
     </button>
   </section>
 </mat-card>

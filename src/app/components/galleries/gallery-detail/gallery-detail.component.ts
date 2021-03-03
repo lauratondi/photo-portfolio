@@ -17,7 +17,8 @@ import { Gallery } from '../../../models/Gallery';
 export class GalleryDetailComponent implements OnInit {
   gallery: Gallery;
   id: string | any;
-  images: AngularFirestoreCollection<any>;
+  // images: AngularFirestoreCollection<any>;
+  // image: AngularFirestoreDocument;
 
   constructor(
     private router: ActivatedRoute,
@@ -27,7 +28,6 @@ export class GalleryDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGallery();
-    console.log(this);
   }
 
   getGallery() {
@@ -41,4 +41,11 @@ export class GalleryDetailComponent implements OnInit {
     this.galleryService.deleteGallery(id);
     console.log('Gallery deleted');
   }
+
+  // getImages() {
+  //   this.galleryService.getGalleryImages(this.id).subscribe((image: any) => {
+  //     this.image = image;
+  //     console.log(image)
+  //   });
+  // }
 }
