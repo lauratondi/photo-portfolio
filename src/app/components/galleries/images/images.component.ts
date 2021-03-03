@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../../services/image.service';
 import { Image } from '../../../models/Image';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-images',
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.css'],

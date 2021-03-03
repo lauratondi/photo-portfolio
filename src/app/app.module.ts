@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminsComponent } from './components/admins/admins.component';
@@ -29,11 +30,8 @@ import { ImagesComponent } from './components/galleries/images/images.component'
     LoginComponent,
     GalleriesListComponent,
     GalleryDetailComponent,
-
     CreateGalleryComponent,
-
     EditGalleryComponent,
-
     ImagesComponent,
   ],
   imports: [
@@ -43,6 +41,7 @@ import { ImagesComponent } from './components/galleries/images/images.component'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    IvyCarouselModule,
 
     MaterialModule,
     FormsModule,
