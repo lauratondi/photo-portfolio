@@ -21,6 +21,7 @@ import { GalleryDetailComponent } from './components/galleries/gallery-detail/ga
 import { CreateGalleryComponent } from './components/galleries/create-gallery/create-gallery.component';
 import { EditGalleryComponent } from './components/galleries/edit-gallery/edit-gallery.component';
 import { ImagesComponent } from './components/galleries/images/images.component';
+import { ImageDetailComponent } from './components/galleries/image-detail/image-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ImagesComponent } from './components/galleries/images/images.component'
     CreateGalleryComponent,
     EditGalleryComponent,
     ImagesComponent,
+    ImageDetailComponent,
   ],
   imports: [
     BrowserModule,

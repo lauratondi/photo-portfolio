@@ -2,4 +2,5 @@
   <div class="carousel-cell" *ngFor="let image of images">
     <img [src]="image.url" alt="{{ image.name }}" routerLink="{{ image.id }}" />
   </div>
+  <p>{{ images.name }}</p>
 </carousel>

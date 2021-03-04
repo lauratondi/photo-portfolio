@@ -28,13 +28,27 @@ export class ImageService {
   getGalleryImages(id: string) {
     this.imageCollection = this.afs.collection(`galleries/${id}/images`);
 
-    this.image = this.imageCollection.snapshotChanges().pipe(
+    this.images = this.imageCollection.snapshotChanges().pipe(
       map((actions) => {
         return actions.map((a) => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
           return { id, ...data };
         });
+      })
+    );
+    return this.images;
+  }
+
+  getImageDetail(id: string) {
+    this.imageDoc = this.afs.doc<Image>(`galleries/${id}images/${id}`);
+
+    this.image = this.imageDoc.snapshotChanges().pipe(
+      map((action) => {
+        const data = action.payload.data();
+        const id = action.payload.id;
+
+        return { id, ...data };
       })
     );
     return this.image;
