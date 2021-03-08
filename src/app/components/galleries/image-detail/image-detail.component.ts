@@ -14,8 +14,9 @@ import { Image } from '../../../models/Image';
   styleUrls: ['./image-detail.component.css'],
 })
 export class ImageDetailComponent implements OnInit {
-  image: Image;
+  image: Image | any;
   id: string | any;
+  name: string | any;
 
   constructor(
     private router: ActivatedRoute,
@@ -32,6 +33,7 @@ export class ImageDetailComponent implements OnInit {
     this.imageService.getImageDetail(this.id).subscribe((image) => {
       this.image = image;
       console.log(image);
+      // return image;
     });
   }
 }

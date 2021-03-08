@@ -1,1 +1,7 @@
-<p>image-detail works!</p>
+<mat-card *ngIf="image">
+  <h1>Look Here</h1>
+  <img src="{{ image.url }}" alt="{{ image.name }}" />
+  <mat-card-content>
+    <mat-card-title>{{ image.url }}/{{ image.id }}</mat-card-title>
+  </mat-card-content>
+</mat-card>

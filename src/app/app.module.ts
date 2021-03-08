@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminsComponent } from './components/admins/admins.component';
@@ -44,7 +45,7 @@ import { ImageDetailComponent } from './components/galleries/image-detail/image-
     AngularFirestoreModule,
     AngularFireAuthModule,
     IvyCarouselModule,
-
+    NgbModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,

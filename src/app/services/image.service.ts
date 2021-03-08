@@ -40,8 +40,8 @@ export class ImageService {
     return this.images;
   }
 
-  getImageDetail(id: string) {
-    this.imageDoc = this.afs.doc<Image>(`galleries/${id}images/${id}`);
+  getImageDetail(id: string | null) {
+    this.imageDoc = this.afs.doc(`galleries/${id}/images/${id}`);
 
     this.image = this.imageDoc.snapshotChanges().pipe(
       map((action) => {
@@ -51,6 +51,9 @@ export class ImageService {
         return { id, ...data };
       })
     );
+    console.log(this.image);
     return this.image;
+
+    // return this.imageDoc.valueChanges();
   }
 }

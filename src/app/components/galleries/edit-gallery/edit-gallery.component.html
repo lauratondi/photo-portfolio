@@ -10,7 +10,7 @@
     <div [hidden]="!uploadPercent || !imageURL">
       <mat-progress-bar
         mode="determinate"
-        value="{{ uploadPercent | async }}"
+        value="{{ uploadPercent }}"
       ></mat-progress-bar>
     </div>
     <div class="image-preview" [hidden]="!imageURL">

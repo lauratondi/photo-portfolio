@@ -1,6 +1,18 @@
-<carousel objectFit="contain" [cellsToShow]="5" [height]="150">
+<!-- <carousel objectFit="contain" [cellsToShow]="5" [height]="150">
   <div class="carousel-cell" *ngFor="let image of images">
     <img [src]="image.url" alt="{{ image.name }}" routerLink="{{ image.id }}" />
   </div>
-  <p>{{ images.name }}</p>
-</carousel>
+  <!-- <h1>{{ images.name }}</h1> -->
+<!-- </carousel> -->
+
+<ngb-carousel #carousel>
+  <ng-template ngbSlide *ngFor="let image of images">
+    <div class="picsum-img-wrapper">
+      <img
+        [src]="image.url"
+        alt="{{ image.name }}"
+        routerLink="{{ image.id }}"
+      />
+    </div>
+  </ng-template>
+</ngb-carousel>

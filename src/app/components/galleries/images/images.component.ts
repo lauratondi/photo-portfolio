@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../../services/image.service';
 import { Image } from '../../../models/Image';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-images',
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.css'],
 })
 export class ImagesComponent implements OnInit {
-  images: Image[];
-  id: string | any;
+  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
+  images: Image[] | any;
+  id: string | any;
+  name: string | any;
   constructor(
     private router: ActivatedRoute,
     private imageService: ImageService
@@ -29,5 +30,17 @@ export class ImagesComponent implements OnInit {
       this.images = images;
       console.log(images);
     });
+  }
+
+  prevSlide() {
+    this.carousel.prev();
+  }
+
+  nextSlide() {
+    this.carousel.next();
+  }
+
+  stopSlide() {
+    this.carousel.pause();
   }
 }
