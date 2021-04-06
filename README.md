@@ -10,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Technologies
 
-Angular | Material | CSS | HTML | Firebase Storage | Firebase Cloud Firestore
+Angular | Typescript | Material | CSS | HTML | Firebase Storage | Firebase Cloud Firestore
 
 ## About the project
 
