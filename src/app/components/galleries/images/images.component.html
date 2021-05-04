@@ -1,11 +1,19 @@
-<!-- <carousel objectFit="contain" [cellsToShow]="5" [height]="150">
+<carousel objectFit="contain" [cellsToShow]="5" [height]="150">
   <div class="carousel-cell" *ngFor="let image of images">
     <img [src]="image.url" alt="{{ image.name }}" routerLink="{{ image.id }}" />
   </div>
-  <!-- <h1>{{ images.name }}</h1> -->
-<!-- </carousel> -->
+  <h1>{{ images.name }}</h1>
+</carousel>
 
-<ngb-carousel #carousel>
+<!-- <ngb-carousel
+  #carousel
+  [showNavigationArrows]="true"
+  [showNavigationIndicators]="true"
+  interval="3000"
+  [keyboard]="true"
+  [pauseOnHover]="true"
+  [wrap]="true"
+>
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">
       <img
@@ -13,6 +21,7 @@
         alt="{{ image.name }}"
         routerLink="{{ image.id }}"
       />
+      <p>{{ image.name }}</p>
     </div>
   </ng-template>
-</ngb-carousel>
+</ngb-carousel> -->

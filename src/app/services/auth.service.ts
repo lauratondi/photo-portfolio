@@ -4,13 +4,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { Admin } from '../models/Admin';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  admin: Observable<Admin> | any;
+  // admin: Observable<Admin> | any;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -25,8 +27,17 @@ export class AuthService {
       .catch((error: any) => console.log(error.message));
   }
 
-  getAuth(): boolean {
-    return this.afAuth !== null;
+  // getAuth(): boolean {
+  //   return this.afAuth !== null;
+  // }
+
+  // If I'm logged in I don't need to see the login form anymore
+  getAuth() {
+    return this.afAuth.authState.pipe(map((auth: any) => auth));
+  }
+
+  logout() {
+    this.afAuth.signOut();
   }
 
   // googleLogin() {

@@ -7,7 +7,7 @@
       multiple
       (change)="detectFiles($event)"
     />
-    <div [hidden]="!uploadPercent || !imageURL">
+    <div *ngIf="uploadPercent | async as progress">
       <mat-progress-bar
         mode="determinate"
         value="{{ uploadPercent }}"

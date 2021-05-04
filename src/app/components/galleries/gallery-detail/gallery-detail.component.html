@@ -3,13 +3,16 @@
     <h1>{{ gallery?.title }}</h1>
     <h2>{{ gallery?.description }}</h2>
     <app-images></app-images>
-    <button mat-icon-button (click)="deleteGallery(id)">
+    <!-- <button mat-icon-button (click)="deleteGallery(id)">
       <mat-icon aria-hidden="false"> delete </mat-icon>
-    </button>
+    </button> -->
   </section>
 </mat-card>
 <mat-card>
-  <section>
+  <section *ngIf="isLoggedIn">
     <app-edit-gallery></app-edit-gallery>
+    <button mat-icon-button (click)="deleteGallery(id)">
+      <mat-icon aria-hidden="false"> delete </mat-icon>
+    </button>
   </section>
 </mat-card>

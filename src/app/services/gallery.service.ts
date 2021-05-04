@@ -23,7 +23,6 @@ export class GalleryService {
   gallery: Observable<Gallery>;
   downloadURL: Observable<string>;
   images: AngularFirestoreCollection<any>;
-  // image: Observable<any>;
 
   constructor(
     private afs: AngularFirestore,
@@ -49,8 +48,8 @@ export class GalleryService {
   //   return this.afs.doc<Gallery>(`galleries/${id}`);
   // }
 
-  getGallery(id: string) {
-    this.galleryDoc = this.afs.doc<Gallery>(`galleries/${id}`);
+  getGallery(galleryId: string) {
+    this.galleryDoc = this.afs.doc<Gallery>(`galleries/${galleryId}`);
 
     this.gallery = this.galleryDoc.snapshotChanges().pipe(
       map((action) => {

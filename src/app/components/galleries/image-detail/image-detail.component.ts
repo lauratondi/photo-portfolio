@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/firestore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../../services/image.service';
+import { GalleryService } from '../../../services/gallery.service';
 import { Image } from '../../../models/Image';
 
 @Component({
@@ -15,12 +16,14 @@ import { Image } from '../../../models/Image';
 })
 export class ImageDetailComponent implements OnInit {
   image: Image | any;
-  id: string | any;
+  id: string;
   name: string | any;
+  url: string;
 
   constructor(
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
     private imageService: ImageService,
+
     private afs: AngularFirestore
   ) {}
 
@@ -29,11 +32,11 @@ export class ImageDetailComponent implements OnInit {
   }
 
   getImage() {
-    this.id = this.router.snapshot.paramMap.get('id');
-    this.imageService.getImageDetail(this.id).subscribe((image) => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.imageService.getImageDetail(id).subscribe((image) => {
       this.image = image;
       console.log(image);
-      // return image;
+      return image;
     });
   }
 }

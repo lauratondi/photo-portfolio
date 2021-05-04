@@ -15,15 +15,25 @@
     >
       <a routerLink="/about" class="nav-link">About</a>
     </li>
+
+    <li class="nav-item" *ngIf="!isLoggedIn">
+      <a routerLink="/login" class="nav-link">Login</a>
+    </li>
     <li
       class="nav-item"
+      *ngIf="isLoggedIn"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
       <a routerLink="/admin" class="nav-link">Admin</a>
     </li>
-    <li class="nav-item">
-      <a routerLink="/login" class="nav-link">Login</a>
+    <li
+      class="nav-item"
+      *ngIf="isLoggedIn"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a href="#" (click)="onLogoutClick()" class="nav-link">Logout</a>
     </li>
   </ul>
 </mat-toolbar>

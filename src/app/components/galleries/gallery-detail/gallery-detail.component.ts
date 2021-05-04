@@ -6,6 +6,7 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
+import { AuthService } from '../../../services/auth.service';
 import { GalleryService } from '../../../services/gallery.service';
 import { Gallery } from '../../../models/Gallery';
 
@@ -15,12 +16,14 @@ import { Gallery } from '../../../models/Gallery';
   styleUrls: ['./gallery-detail.component.css'],
 })
 export class GalleryDetailComponent implements OnInit {
+  isLoggedIn: boolean;
   gallery: Gallery;
   id: string | any;
   // images: AngularFirestoreCollection<any>;
   // image: AngularFirestoreDocument;
 
   constructor(
+    private authService: AuthService,
     private router: ActivatedRoute,
     private galleryService: GalleryService,
     private afs: AngularFirestore
@@ -28,6 +31,13 @@ export class GalleryDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGallery();
+    this.authService.getAuth().subscribe((auth) => {
+      if (auth) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
   }
 
   getGallery() {

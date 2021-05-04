@@ -10,6 +10,8 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Image } from '../models/Image';
+import { Gallery } from '../models/Gallery';
+import { GalleryService } from '../services/gallery.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,43 +19,49 @@ import { Image } from '../models/Image';
 export class ImageService {
   images: Observable<Image[]>;
   image: Observable<any>;
+  gallery: Observable<Gallery>;
   imageCollection: AngularFirestoreCollection<Image>;
-  imageDoc: AngularFirestoreDocument;
+  imageDoc: AngularFirestoreDocument<Image>;
+  url!: string;
+  name: string;
+  galleryId: any;
 
   constructor(
     private afs: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private galleryService: GalleryService
   ) {}
 
-  getGalleryImages(id: string) {
-    this.imageCollection = this.afs.collection(`galleries/${id}/images`);
+  getGalleryImages(galleryId: string | any): Observable<Image[]> {
+    this.imageCollection = this.afs.collection(`galleries/${galleryId}/images`);
 
     this.images = this.imageCollection.snapshotChanges().pipe(
-      map((actions) => {
-        return actions.map((a) => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
+      map((changes) => {
+        return changes.map((action) => {
+          const data = action.payload.doc.data() as Image;
+          console.log(data);
+          const id = action.payload.doc.id;
           return { id, ...data };
         });
       })
     );
+
     return this.images;
   }
 
-  getImageDetail(id: string | null) {
-    this.imageDoc = this.afs.doc(`galleries/${id}/images/${id}`);
+  getImageDetail(id: string | any) {
+    this.imageDoc = this.afs.doc(`galleries/${this.galleryId}/images/${id}`);
 
     this.image = this.imageDoc.snapshotChanges().pipe(
       map((action) => {
         const data = action.payload.data();
-        const id = action.payload.id;
 
+        const id = action.payload.id;
+        console.log(data, id);
         return { id, ...data };
       })
     );
-    console.log(this.image);
-    return this.image;
 
-    // return this.imageDoc.valueChanges();
+    return this.image;
   }
 }
