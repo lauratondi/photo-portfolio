@@ -23,6 +23,7 @@ import { CreateGalleryComponent } from './components/galleries/create-gallery/cr
 import { EditGalleryComponent } from './components/galleries/edit-gallery/edit-gallery.component';
 import { ImagesComponent } from './components/galleries/images/images.component';
 import { ImageDetailComponent } from './components/galleries/image-detail/image-detail.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ImageDetailComponent } from './components/galleries/image-detail/image-
     EditGalleryComponent,
     ImagesComponent,
     ImageDetailComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

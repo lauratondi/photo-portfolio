@@ -1,5 +1,6 @@
 <mat-card>
   <section>
+    <h3 style="text-align: center">Create a new gallery</h3>
     <form [formGroup]="galleryForm" (ngSubmit)="saveGallery()">
       <mat-form-field>
         <input matInput placeholder="Gallery title" formControlName="title" />
