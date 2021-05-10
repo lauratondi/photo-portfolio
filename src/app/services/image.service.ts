@@ -33,7 +33,10 @@ export class ImageService {
   ) {}
 
   getGalleryImages(galleryId: string | any): Observable<Image[]> {
-    this.imageCollection = this.afs.collection(`galleries/${galleryId}/images`);
+    this.imageCollection = this.afs.collection(
+      `galleries/${galleryId}/images`,
+      (ref) => ref.orderBy('name', 'asc')
+    );
 
     this.images = this.imageCollection.snapshotChanges().pipe(
       map((changes) => {
