@@ -1,8 +1,8 @@
 <carousel objectFit="contain" [cellsToShow]="5" [height]="130">
   <div class="carousel-cell" *ngFor="let image of images">
-    <img [src]="image.url" alt="{{ image.name }}" routerLink="{{ image.id }}" />
+    <img [src]="image.url" alt="{{ image.name }}" />
   </div>
-  <h1>{{ images.name }}</h1>
+  <h3>{{ images.name }}</h3>
 </carousel>
 
 <!-- <ngb-carousel
