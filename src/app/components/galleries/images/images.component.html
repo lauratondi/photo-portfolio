@@ -1,9 +1,16 @@
-<carousel objectFit="contain" [cellsToShow]="5" [height]="300">
-  <div class="carousel-cell" *ngFor="let image of images">
-    <img [src]="image.url" alt="{{ image.name }}" />
-  </div>
-  <h3>{{ images.name }}</h3>
-</carousel>
+<section *ngIf="images">
+  <carousel
+    objectFit="contain"
+    [cellsToShow]="3"
+    [height]="300"
+    [overflowCellsLimit]="3"
+  >
+    <div class="carousel-cell" *ngFor="let image of images">
+      <img [src]="image.url" alt="{{ image.name }}" />
+      <p>{{ images.name }}</p>
+    </div>
+  </carousel>
+</section>
 
 <!-- <ngb-carousel
   #carousel
@@ -25,3 +32,15 @@
     </div>
   </ng-template>
 </ngb-carousel> -->
+
+<!-- <swiper
+  [slidesPerView]="3"
+  [spaceBetween]="50"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+>
+  <ng-template swiperSlide *ngFor="let image of images">
+    <img [src]="image.url" alt="{{ image.name }}" routerLink="{{ image.id }}" />
+    <p>{{ image.name }}</p>
+  </ng-template>
+</swiper> -->

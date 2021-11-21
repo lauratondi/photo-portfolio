@@ -1,9 +1,16 @@
-h3 {
+p {
   color: black;
 }
 img {
-  width: 80%;
+  width: 30%;
 }
+
+/* .carousel-cells {
+  height: 300px !important;
+}
+.carousel-cell {
+  height: 300px !important;
+} */
 
 /* .carousel-cell {
   margin-right: 5%;

@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+// import { Swiper } from 'node_modules/swiper/swiper';
+// import { SwiperModule } from 'swiper/angular';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -47,6 +50,7 @@ import { LandingComponent } from './components/landing/landing.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     IvyCarouselModule,
+
     NgbModule,
     MaterialModule,
     FormsModule,

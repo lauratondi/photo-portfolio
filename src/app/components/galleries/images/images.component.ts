@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+// import { SwiperModule } from 'swiper/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../../services/image.service';
 import { Image } from '../../../models/Image';
@@ -10,7 +11,7 @@ import { Image } from '../../../models/Image';
   styleUrls: ['./images.component.css'],
 })
 export class ImagesComponent implements OnInit {
-  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
+  // @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   images: Image[] | any;
   id: string | any;
@@ -42,5 +43,11 @@ export class ImagesComponent implements OnInit {
 
   // stopSlide() {
   //   this.carousel.pause();
+  // }
+  // onSwiper(swiper: any) {
+  //   console.log(swiper);
+  // }
+  // onSlideChange() {
+  //   console.log('slide change');
   // }
 }
