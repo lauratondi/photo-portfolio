@@ -1,4 +1,4 @@
-<h1>Galleries</h1>
+<h1 class="text-center">Galleries</h1>
 
 <main>
   <mat-card *ngFor="let gallery of galleries">
@@ -10,9 +10,6 @@
       <mat-card-subtitle>
         {{ gallery.description }}
       </mat-card-subtitle>
-      <!-- <app-gallery-detail></app-gallery-detail>
-      <app-images></app-images> -->
-      <!-- <app-gallery-detail></app-gallery-detail> -->
     </mat-card-content>
   </mat-card>
   <section *ngIf="isLoggedIn">

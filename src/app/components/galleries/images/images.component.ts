@@ -33,17 +33,6 @@ export class ImagesComponent implements OnInit {
     });
   }
 
-  // prevSlide() {
-  //   this.carousel.prev();
-  // }
-
-  // nextSlide() {
-  //   this.carousel.next();
-  // }
-
-  // stopSlide() {
-  //   this.carousel.pause();
-  // }
   // onSwiper(swiper: any) {
   //   console.log(swiper);
   // }
